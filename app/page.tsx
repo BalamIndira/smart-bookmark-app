@@ -3,12 +3,11 @@
 import { supabase } from "@/lib/supabase";
 
 export default function Home() {
-
   const handleLogin = async () => {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: "http://localhost:3000/dashboard",
+        redirectTo: "https://smart-bookmark-app-nine-tau.vercel.app",
       },
     });
 
@@ -19,10 +18,8 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-blue-50 to-purple-100 flex items-center justify-center p-6">
-
       {/* Card */}
       <div className="bg-white shadow-2xl rounded-3xl p-10 w-full max-w-md text-center border border-gray-100">
-
         {/* Logo / Icon */}
         <div className="mb-6">
           <div className="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-r from-indigo-500 to-purple-500 flex items-center justify-center text-white text-2xl font-bold shadow-md">
@@ -56,7 +53,6 @@ export default function Home() {
         <p className="text-xs text-gray-400 mt-8">
           Secure login powered by Supabase
         </p>
-
       </div>
     </div>
   );
