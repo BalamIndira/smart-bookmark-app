@@ -6,7 +6,7 @@ Users can securely log in using Google OAuth, add private bookmarks, and see rea
 
 ## 🚀 Live Demo
 
-Live URL: https://your-app.vercel.app  
+Live URL: https://smart-bookmark-app-nine-tau.vercel.app/
 GitHub Repository:https://github.com/BalamIndira/smart-bookmark-app.git
 
 
