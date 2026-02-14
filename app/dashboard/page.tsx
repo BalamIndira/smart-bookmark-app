@@ -9,7 +9,7 @@ export default function Dashboard() {
   const [title, setTitle] = useState("");
   const [url, setUrl] = useState("");
 
-  // 🔹 Get Logged In User
+ 
   useEffect(() => {
     const getUser = async () => {
       const { data } = await supabase.auth.getUser();
@@ -21,7 +21,7 @@ export default function Dashboard() {
     getUser();
   }, []);
 
-  // 🔹 Fetch Bookmarks
+
   const fetchBookmarks = async (userId: string) => {
     const { data } = await supabase
       .from("bookmarks")
@@ -32,7 +32,7 @@ export default function Dashboard() {
     setBookmarks(data || []);
   };
 
-  // 🔹 Add Bookmark
+
   const addBookmark = async () => {
     if (!title || !url) return;
 
@@ -55,13 +55,12 @@ export default function Dashboard() {
     fetchBookmarks(session.user.id);
   };
 
-  // 🔹 Delete Bookmark
+
   const deleteBookmark = async (id: string) => {
     await supabase.from("bookmarks").delete().eq("id", id);
     if (user) fetchBookmarks(user.id);
   };
 
-  // 🔹 Logout
   const handleLogout = async () => {
     await supabase.auth.signOut();
     window.location.href = "/";
@@ -79,7 +78,7 @@ export default function Dashboard() {
     <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-blue-50 to-purple-100 flex items-center justify-center p-6">
       <div className="w-full max-w-3xl bg-white rounded-3xl shadow-2xl p-8 border border-gray-100">
         
-        {/* Header */}
+
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
             Welcome, {user.user_metadata?.full_name || user.email}
@@ -93,7 +92,7 @@ export default function Dashboard() {
           </button>
         </div>
 
-        {/* Add Bookmark Form */}
+ 
         <div className="flex flex-col md:flex-row gap-4 mb-8">
           <input
             type="text"
@@ -119,7 +118,7 @@ export default function Dashboard() {
           </button>
         </div>
 
-        {/* Bookmark List */}
+ 
         <h3 className="text-lg font-semibold mb-4 text-gray-700">
           Your Bookmarks
         </h3>
@@ -140,7 +139,7 @@ export default function Dashboard() {
                     {bookmark.title}
                   </p>
 
-                  {/* ✅ Long URL Fix */}
+                 
                   <a
                     href={bookmark.url}
                     target="_blank"
